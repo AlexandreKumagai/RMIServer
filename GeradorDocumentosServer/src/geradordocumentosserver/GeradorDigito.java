@@ -5,13 +5,10 @@
  */
 package geradordocumentosserver;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-
 /**
  *
  * @author unifrasilva
  */
-public interface GeradorInterface extends Remote{
-    public String executa(String i, int flag) throws RemoteException;
+public interface GeradorDigito {
+    public String gerar(String doc);
 }

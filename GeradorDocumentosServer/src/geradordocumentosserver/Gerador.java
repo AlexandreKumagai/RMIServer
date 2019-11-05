@@ -5,13 +5,16 @@
  */
 package geradordocumentosserver;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-
 /**
  *
  * @author unifrasilva
  */
-public interface GeradorInterface extends Remote{
-    public String executa(String i, int flag) throws RemoteException;
+public class Gerador {
+    private GeradorDigito gerador;
+    Gerador(Integer codigo){
+        gerador = new RelacaoDocumentos().getInstance(codigo);
+    }
+    public GeradorDigito getGerador(){
+        return this.gerador;
+    }
 }

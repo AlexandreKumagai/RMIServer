@@ -17,12 +17,16 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class GeradorDocumentosServer extends UnicastRemoteObject implements GeradorInterface {
 
+
     public GeradorDocumentosServer() throws RemoteException{
     }
 
-                @Override
-    public void executa(float f) throws RemoteException {
-            System.out.println("recebeu porrra");     
+    @Override
+    public String executa(String doc , int flag) throws RemoteException {
+        
+            System.out.println("recebeu  :" +  doc);     
+        
+            return "Documento gerado : " + new Gerador(flag).getGerador().gerar(doc);
     }
     /**
      * @param args the command line arguments
@@ -35,7 +39,7 @@ public class GeradorDocumentosServer extends UnicastRemoteObject implements Gera
             GeradorDocumentosServer servidor = new GeradorDocumentosServer();
             r.rebind("japones", servidor);
             System.out.println("Servidor pronto "+r.lookup("japones"));     
-        
+            
         }catch(NotBoundException | RemoteException e){
            
             e.printStackTrace();
